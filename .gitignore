@@ -6,53 +6,54 @@ class Program
     {
         Console.WriteLine("Enter an integer value between 1 and 100:");
         int userInput = ReadIntegerInput(1, 100);
-        
+
         Console.WriteLine("Enter the series you want (even or odd):");
         string seriesType = ReadSeriesType();
-        
-        Console.WriteLine($"You have selected the {seriesType} series. The numbers between 0 and {Input} are:");
-        
+
+        Console.WriteLine($"You have selected the {seriesType} series. The numbers between 0 and {userInput} are:");
+
         int startNumber = seriesType == "even" ? 0 : 1;
-        int increment = seriesType == "even" ? 2 : 2;
-        
+        int increment = seriesType == "even" ? 2 : 1;
+
         int number = startNumber;
-        while (number <= Input)
+        while (number <= userInput)
         {
             Console.WriteLine(number);
             number += increment;
         }
     }
 
-    static int ReadIntegerInput( 1, 100)
+    static int ReadIntegerInput(int min, int max)
     {
-        int Input;
+        int input;
         while (true)
         {
             try
             {
-                Input = int.Parse(Console.ReadLine());
-                if (Input >= min && Input <= max)
+                input = int.Parse(Console.ReadLine());
+                if (input >= min && input <= max)
                     break;
-                
-                Console.WriteLine($"Please enter an integer between {0} and {100}.");
+
+                Console.WriteLine($"Please enter an integer between {min} and {max}.");
             }
             catch (FormatException)
             {
                 Console.WriteLine("Invalid input. Please enter an integer.");
             }
         }
-        return Input;
+        return input;
     }
-    
+
     static string ReadSeriesType()
     {
         while (true)
         {
             string userInput = Console.ReadLine().ToLower();
-            if (Input == "even" || Input == "odd")
-                return uInput;
-            
+            if (userInput == "even" || userInput == "odd")
+                return userInput;
+
             Console.WriteLine("Invalid series type. Please enter 'even' or 'odd'.");
         }
     }
 }
+ 
