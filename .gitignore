@@ -10,38 +10,38 @@ class Program
         Console.WriteLine("Enter the series you want (even or odd):");
         string seriesType = ReadSeriesType();
         
-        Console.WriteLine($"You have selected the {seriesType} series. The numbers between 0 and {userInput} are:");
+        Console.WriteLine($"You have selected the {seriesType} series. The numbers between 0 and {Input} are:");
         
         int startNumber = seriesType == "even" ? 0 : 1;
         int increment = seriesType == "even" ? 2 : 2;
         
         int number = startNumber;
-        while (number <= userInput)
+        while (number <= Input)
         {
             Console.WriteLine(number);
             number += increment;
         }
     }
 
-    static int ReadIntegerInput(int min, int max)
+    static int ReadIntegerInput( 1, 100)
     {
-        int userInput;
+        int Input;
         while (true)
         {
             try
             {
-                userInput = int.Parse(Console.ReadLine());
-                if (userInput >= min && userInput <= max)
+                Input = int.Parse(Console.ReadLine());
+                if (Input >= min && Input <= max)
                     break;
                 
-                Console.WriteLine($"Please enter an integer between {min} and {max}.");
+                Console.WriteLine($"Please enter an integer between {0} and {100}.");
             }
             catch (FormatException)
             {
                 Console.WriteLine("Invalid input. Please enter an integer.");
             }
         }
-        return userInput;
+        return Input;
     }
     
     static string ReadSeriesType()
@@ -49,8 +49,8 @@ class Program
         while (true)
         {
             string userInput = Console.ReadLine().ToLower();
-            if (userInput == "even" || userInput == "odd")
-                return userInput;
+            if (Input == "even" || Input == "odd")
+                return uInput;
             
             Console.WriteLine("Invalid series type. Please enter 'even' or 'odd'.");
         }
