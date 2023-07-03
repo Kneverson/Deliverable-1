@@ -1,32 +1,58 @@
-# Prerequisites
-*.d
+using System;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter an integer value between 1 and 100:");
+        int userInput = ReadIntegerInput(1, 100);
+        
+        Console.WriteLine("Enter the series you want (even or odd):");
+        string seriesType = ReadSeriesType();
+        
+        Console.WriteLine($"You have selected the {seriesType} series. The numbers between 0 and {userInput} are:");
+        
+        int startNumber = seriesType == "even" ? 0 : 1;
+        int increment = seriesType == "even" ? 2 : 2;
+        
+        int number = startNumber;
+        while (number <= userInput)
+        {
+            Console.WriteLine(number);
+            number += increment;
+        }
+    }
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+    static int ReadIntegerInput(int min, int max)
+    {
+        int userInput;
+        while (true)
+        {
+            try
+            {
+                userInput = int.Parse(Console.ReadLine());
+                if (userInput >= min && userInput <= max)
+                    break;
+                
+                Console.WriteLine($"Please enter an integer between {min} and {max}.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter an integer.");
+            }
+        }
+        return userInput;
+    }
+    
+    static string ReadSeriesType()
+    {
+        while (true)
+        {
+            string userInput = Console.ReadLine().ToLower();
+            if (userInput == "even" || userInput == "odd")
+                return userInput;
+            
+            Console.WriteLine("Invalid series type. Please enter 'even' or 'odd'.");
+        }
+    }
+}
