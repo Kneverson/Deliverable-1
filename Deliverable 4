@@ -1,0 +1,88 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPSitlqmgC/b+51YFVTOuOs",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Kneverson/Deliverable-1/blob/main/Deliverable%204\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vLFUOK1H1IqP",
+        "outputId": "c99f9cc6-d95a-426b-b9ec-1f8103faa653"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter an integer number between 5 and 15: 15\n",
+            "The elements of the array are: 34 15 30 25 42 26 33 46 40 37 18 24 42 37 49 \n",
+            "The sum is: 498\n"
+          ]
+        }
+      ],
+      "source": [
+        "import random\n",
+        "import sys\n",
+        "\n",
+        "def random_array(array_len):\n",
+        "    my_array = [random.randint(10, 50) for _ in range(array_len)]\n",
+        "    return my_array\n",
+        "\n",
+        "def array_sum(array):\n",
+        "    return sum(array)\n",
+        "\n",
+        "def main():\n",
+        "    while True:\n",
+        "        try:\n",
+        "            user_input = int(input(\"Enter an integer number between 5 and 15: \"))\n",
+        "            if 5 <= user_input <= 15:\n",
+        "                my_array = random_array(user_input)\n",
+        "\n",
+        "                print(\"The elements of the array are:\", end=\" \")\n",
+        "                for num in my_array:\n",
+        "                    print(num, end=\" \")\n",
+        "                print()\n",
+        "\n",
+        "                print(\"The sum is:\", array_sum(my_array))\n",
+        "                break\n",
+        "            else:\n",
+        "                print(\"Invalid input. Please enter a number between 5 and 15.\")\n",
+        "        except ValueError:\n",
+        "            print(\"Invalid input. Please enter an integer number.\")\n",
+        "        except KeyboardInterrupt:\n",
+        "            print(\"\\nProgram terminated by the user.\")\n",
+        "            sys.exit(0)\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()\n"
+      ]
+    }
+  ]
+}
